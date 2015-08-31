@@ -70,7 +70,7 @@ def ga(_fitfunc, _nvars, _LB, _UB):
 				fit = fitness(decode(newInd))
 				newPop.append(newInd)
 				newFit.append(fit)
-	            
+	    
 	    while len(pop) != len(newPop):
 	        worst = max(newFit)
 	        newPop.remove(newPop[newFit.index(worst)])   
@@ -79,10 +79,13 @@ def ga(_fitfunc, _nvars, _LB, _UB):
 	    pop = newPop
 	    popFit = newFit
 	    
-	return decode(pop[popFit.index(min(popFit))]), min(popFit)
+	return np.array(decode(pop[popFit.index(min(popFit))])), min(popFit)
 
 def population():
     global pop, popFit
+
+    pop = []
+    popFit = []
     for i in xrange(0, popSize):
         ind = randInd()
         fit = fitness(decode(ind))
