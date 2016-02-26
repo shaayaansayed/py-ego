@@ -14,7 +14,7 @@ y = np.zeros((n, 1))
 
 # find true values
 for i in range(k):
-	y[i] = true_function(X[i], 1)
+    y[i] = true_function(X[i], 1)
 
 # create kriging model
 kr = kriging(k, X, y)
@@ -30,11 +30,11 @@ MinExpImp = 1e14
 infill = 0
 
 while abs(MinExpImp) > 1e-3 and infill < 3*n:
-	Xnew, EI = E.next_infill()
-	Ynew = true_function(Xnew, 1)
-	kr.X = np.vstack((kr.X, Xnew))
-	kr.y = np.vstack((kr.y, Ynew))
-	infill = infill + 1
+    Xnew, EI = E.next_infill()
+    Ynew = true_function(Xnew, 1)
+    kr.X = np.vstack((kr.X, Xnew))
+    kr.y = np.vstack((kr.y, Ynew))
+    infill = infill + 1
 
-	kr.train()
-	kr.plot_2d()
+    kr.train()
+    kr.plot_2d()
